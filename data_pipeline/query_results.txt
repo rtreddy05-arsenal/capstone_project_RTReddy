@@ -1,0 +1,64 @@
+[Query 1 (SELECT/WHERE)]
+SELECT title, price_inr FROM books WHERE in_stock = 1 LIMIT 5;
+
+OUTPUT:
+                                                                                   title  price_inr
+                                   Mesaerion: The Best Science Fiction Stories 1800-1849    3965.75
+                                                                                    Join    3763.19
+William Shakespeare's Star Wars: Verily, A New Hope (William Shakespeare's Star Wars #4)    4568.15
+                                                                             The Project    1123.58
+                                                                         Soft Apocalypse    2755.66
+
+[Query 2 (ORDER BY/LIMIT)]
+SELECT title, price_inr FROM books ORDER BY price_inr DESC LIMIT 5;
+
+OUTPUT:
+                                                                                                                 title  price_inr
+Aristotle and Dante Discover the Secrets of the Universe (Aristotle and Dante Discover the Secrets of the Universe #1)    6133.77
+                                                                                        Slow States of Collapse: Poems    6046.20
+                                                                                                      Don't Get Caught    5839.42
+                                                                                                        Dune (Dune #1)    5787.73
+                                                                            Out of Print: City Lights Spotlight No. 14    5659.02
+
+[Query 3 (DISTINCT)]
+SELECT DISTINCT rating FROM books ORDER BY rating ASC;
+
+OUTPUT:
+ rating
+      1
+      2
+      3
+      4
+      5
+
+[Query 4 (BETWEEN)]
+SELECT title, price_inr FROM books WHERE price_inr BETWEEN 2000.00 AND 4000.00 LIMIT 5;
+
+OUTPUT:
+                                                title  price_inr
+Mesaerion: The Best Science Fiction Stories 1800-1849    3965.75
+                                                 Join    3763.19
+                                      Soft Apocalypse    2755.66
+                                                Arena    2253.48
+       Foundation (Foundation (Publication Order) #1)    3420.31
+
+[Query 5 (JOIN)]
+SELECT b.title, c.category_name, b.rating 
+FROM books b 
+JOIN categories c ON b.category_id = c.category_id 
+ORDER BY b.rating DESC, b.title ASC 
+LIMIT 10;
+
+OUTPUT:
+                                                     title   category_name  rating
+                                                    Booked          Poetry       5
+                            Frostbite (Vampire Academy #2)     Young-Adult       5
+                                                      Join Science-Fiction       5
+           Leave This Song Behind: Teen Poetry at Its Best          Poetry       5
+                                         Les Fleurs du Mal          Poetry       5
+Library of Souls (Miss Peregrineâs Peculiar Children #3)     Young-Adult       5
+                Out of Print: City Lights Spotlight No. 14          Poetry       5
+Quarter Life Poetry: Poems for the Young, Broke and Hangry          Poetry       5
+                            Scarlett Epstein Hates It Here     Young-Adult       5
+                                               Set Me Free     Young-Adult       5
+
